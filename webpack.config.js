@@ -1,21 +1,40 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const path = require('path');
+const resolve = require('path').resolve;
 const webpack = require('webpack');
 
 const config = {
-  entry: path.resolve(__dirname, 'index.js'),
+  entry: [
+    resolve(__dirname, './src/index.js')
+  ],
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: resolve(__dirname, 'dist'),
     filename: 'bundle.js'
   },
   module: {
     rules: [
-      {test: /\.(js)$/, exclude: path.resolve(__dirname, 'node_modules'), use: 'babel-loader'}
+      {test: /\.(js)$/, exclude: resolve(__dirname, 'node_modules'), use: 'babel-loader'}
     ]
+  },
+  resolve: {
+    modules: [
+      resolve(__dirname, 'node_modules'),
+      resolve(__dirname, 'src')
+    ]
+  },
+  devtool: 'eval-source-map',
+  devServer: {
+    port: 3000,
+    historyApiFallback: true
   },
   plugins: [
     new webpack.optimize.UglifyJsPlugin(),
-    new HtmlWebpackPlugin({template: 'index.html'})
+    new HtmlWebpackPlugin({template: 'index.html'}),
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('development')
+      },
+      __development__: true
+    })
   ]
 };
 
