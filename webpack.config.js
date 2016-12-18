@@ -12,7 +12,8 @@ const config = {
   },
   module: {
     rules: [
-      {test: /\.(js)$/, exclude: resolve(__dirname, 'node_modules'), use: 'babel-loader'}
+      {test: /\.(js)$/, exclude: resolve(__dirname, 'node_modules'), use: 'babel-loader'},
+      {test: /\.(scss)$/, use: ["style-loader", "css-loader", "sass-loader"]}
     ]
   },
   resolve: {
