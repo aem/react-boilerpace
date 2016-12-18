@@ -13,7 +13,8 @@ const config = {
   module: {
     rules: [
       {test: /\.(js)$/, exclude: resolve(__dirname, 'node_modules'), use: 'babel-loader'},
-      {test: /\.(scss)$/, use: ["style-loader", "css-loader", "sass-loader"]}
+      {test: /\.(scss)$/, use: ['style-loader', 'css-loader', 'resolve-url-loader', 'sass-loader?sourceMap']},
+      {test: /\.(png|jpg|jpeg)$/, use: 'url-loader'}
     ]
   },
   resolve: {
@@ -32,7 +33,7 @@ const config = {
     hints: false
   },
   plugins: [
-    new webpack.optimize.UglifyJsPlugin(),
+    // new webpack.optimize.UglifyJsPlugin(),
     new HtmlWebpackPlugin({template: 'index.html'}),
     new webpack.DefinePlugin({
       'process.env': {

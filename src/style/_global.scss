@@ -1,3 +1,11 @@
 * {
   font-family: Arial, sans-serif;
 }
+
+.css-image {
+  background-image: url('img/developers.jpg');
+  height: 150px;
+  width: 150px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
