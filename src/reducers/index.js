@@ -6,7 +6,7 @@ const reducer = combineReducers({
 });
 
 const store = createStore(reducer, undefined, compose(
-  (__development__ && window.devToolsExtension) ? window.devToolsExtension() : f => f
+  (process.env.NODE_ENV === 'development' && window.devToolsExtension) ? window.devToolsExtension() : f => f
 ));
 
 export default store;
