@@ -52,4 +52,4 @@ Install the [Redux Dev Tools](https://chrome.google.com/webstore/detail/redux-de
 * [Redux](http://redux.js.org/docs/introduction/index.html)
 * [Immutable.js](https://facebook.github.io/immutable-js/)
 * [webpack](https://webpack.js.org)
-* [Babel}(https://babeljs.io)
+* [Babel](https://babeljs.io)
