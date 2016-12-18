@@ -1,7 +1,7 @@
 # react-boilerplate
 My own personal React boilerplate. This is a combination of me trying to get a better understanding of React, Redux, and wanting to learn webpack.
 
-### To use this boilerplate
+## To use this boilerplate
 Requirements:
 * Node v6+
 * [Yarn](https://yarnpkg.com) (NPM will do fine, but seriously, use Yarn)
@@ -14,6 +14,13 @@ cd my-first-app
 yarn
 npm start
 ```
+
+## Project Features
+This boilerplate project has a few nice things over other webpack/React/Redux boilerplates
+* SCSS/CSS support by default, no extra config required
+* Image support by default
+  * Images use same URL in all locations. Most boilerplates use different URL schemes if you're `require`ing an image vs. when you `url()` an image from CSS
+* Simple example components that are easily understandable and easy to replace when you're ready to start writing code
 
 ## Project Structure
 
