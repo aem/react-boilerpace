@@ -24,7 +24,11 @@ const config = {
   devtool: 'eval-source-map',
   devServer: {
     port: 3000,
-    historyApiFallback: true
+    historyApiFallback: true,
+    stats: 'errors-only'
+  },
+  performance: {
+    hints: false
   },
   plugins: [
     new webpack.optimize.UglifyJsPlugin(),
