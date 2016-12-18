@@ -2,14 +2,6 @@ import { Link } from 'react-router';
 import React, { Component, PropTypes } from 'react';
 
 export default class RouterContainer extends Component {
-  static childContextTypes = {
-    isLoaded: PropTypes.bool.isRequired
-  };
-
-  getChildContext = () => ({
-    isLoaded: true
-  });
-
   render() {
     return (
       <div>
