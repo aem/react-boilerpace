@@ -2,7 +2,7 @@ import { applyMiddleware, createStore, compose } from 'redux';
 import combinedReducer from '../reducers';
 import ReduxThunk from 'redux-thunk';
 
-const store = createStore(combinedReducer, compose(
+const store = createStore(combinedReducer, undefined, compose(
   applyMiddleware(ReduxThunk),
   (typeof process !== 'undefined' && process.env.NODE_ENV === 'development' && window.devToolsExtension) ?
     window.devToolsExtension() :

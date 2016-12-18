@@ -1,11 +1,13 @@
-const defaultState = {
-  rootText: "test"
-};
+import { Record } from 'immutable';
 
-export default function testReducer(state = defaultState, action) {
+const defaultState = Record({
+  rootText: "test"
+});
+
+export default function testReducer(state = new defaultState, action) {
   switch (action.type) {
     case 'UPDATE_TEXT':
-      return {rootText: action.data};
+      return state.merge({rootText: action.data});
     default: return state;
   }
 }

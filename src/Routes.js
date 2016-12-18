@@ -2,7 +2,7 @@ import { IndexRoute, Route } from 'react-router';
 import React from 'react';
 
 import GlobalWrapper from 'containers/RouterContainer';
-import TextDisplay from 'components/home/TextDisplay';
+import TextDisplay from 'containers/TextDisplay';
 
 const Page1 = props => <div>page 1</div>;
 const Page2 = props => <div>page 2</div>;
