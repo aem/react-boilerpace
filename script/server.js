@@ -32,6 +32,8 @@ const HTML = ({reduxState, renderProps}) => (
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1.0" />
       <title>React Boilerplate</title>
+      <link rel="preload" href="/bundle.js" as="script" />
+      <link rel="prefetch" href="/bundle.js" />
       <style dangerouslySetInnerHTML={{__html: style}} />
     </head>
   <body>
@@ -41,8 +43,8 @@ const HTML = ({reduxState, renderProps}) => (
       </Provider>
     )}}>
     </div>
-    <script dangerouslySetInnerHTML={{__html: `window.__INITIAL_STATE__ = ${JSON.stringify(reduxState.getState())}`}}></script>
-    <script defer src="/bundle.js"></script>
+    <script dangerouslySetInnerHTML={{__html: `window.__INITIAL_STATE__=${JSON.stringify(reduxState.getState())}`}} />
+    <script src="/bundle.js" />
     </body>
   </html>
 );
