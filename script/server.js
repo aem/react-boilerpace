@@ -5,8 +5,8 @@ import { match, RouterContext } from 'react-router';
 import { Provider } from 'react-redux';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import routes from './Routes';
-import { store, extras } from './lib/store';
+import routes from '../src/Routes';
+import { store, extras } from '../src/lib/store';
 import sass from 'node-sass';
 
 let style = '';
@@ -18,7 +18,7 @@ sass.render({file: 'src/style/index.scss'}, (err, result) => {
 
 const app = express();
 
-app.use('/images', express.static('dist'));
+app.use('/images', express.static('dist/images'));
 
 app.use('/bundle.js', function (req, res) {
   return fs.createReadStream('./dist/bundle.js').pipe(res);

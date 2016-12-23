@@ -11,9 +11,7 @@ const config = {
   },
   module: {
     rules: [
-      {test: /\.(js)$/, exclude: resolve(__dirname, 'node_modules'), use: 'babel-loader'},
-      {test: /\.(scss)$/, use: ['style-loader', 'css-loader', 'resolve-url-loader', 'sass-loader?sourceMap']},
-      {test: /\.(png|jpg|jpeg)$/, use: 'url-loader'}
+      {test: /\.(js)$/, exclude: resolve(__dirname, 'node_modules'), use: 'babel-loader'}
     ]
   },
   resolve: {
