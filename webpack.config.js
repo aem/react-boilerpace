@@ -1,3 +1,4 @@
+const CompressionPlugin = require('compression-webpack-plugin');
 const resolve = require('path').resolve;
 const webpack = require('webpack');
 
@@ -29,6 +30,13 @@ const config = {
       'process.env': {
         'NODE_ENV': JSON.stringify('development')
       }
+    }),
+    new CompressionPlugin({
+      asset: "[path].gz[query]",
+      algorithm: "gzip",
+      test: /\.js$/,
+      threshold: 10240,
+      minRatio: 0.8
     })
   ]
 };
