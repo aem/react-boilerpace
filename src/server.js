@@ -1,0 +1,47 @@
+import { createStore } from 'redux';
+import express from 'express';
+import fs from 'fs';
+import { match, RouterContext } from 'react-router';
+import { Provider } from 'react-redux';
+import React from 'react';
+import { renderToString } from 'react-dom/server';
+import routes from './Routes';
+import { store, extras } from './lib/store';
+
+const app = express();
+
+app.use('/bundle.js', function (req, res) {
+  return fs.createReadStream('./dist/bundle.js').pipe(res);
+});
+
+const HTML = ({reduxState, renderProps}) => (
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+        <title>React Boilerplate</title>
+    </head>
+  <body>
+    <div id="app" dangerouslySetInnerHTML={{__html: renderToString(
+      <Provider store={reduxState}>
+        <RouterContext {...renderProps} />
+      </Provider>
+    )}}>
+    </div>
+    <script dangerouslySetInnerHTML={{__html: `window.__INITIAL_STATE__ = ${JSON.stringify(reduxState.getState())}`}}></script>
+    <script defer src="/bundle.js"></script>
+    </body>
+  </html>
+);
+
+app.use((req, res) => {
+  const initialStore = createStore(store, undefined, extras);
+  match({routes, location: req.url}, (err, redirectLocation, renderProps) => {
+    if (err) res.status(500).send(err.message);
+    else if (renderProps) {
+      res.send(renderToString(<HTML reduxState={initialStore} renderProps={renderProps} />));
+    }
+  })
+});
+
+app.listen(3000);
+console.log('Server is now listening at localhost://3000');

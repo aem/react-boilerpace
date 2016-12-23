@@ -1,4 +1,4 @@
-import createAction from 'lib/createAction';
+import createAction from '../lib/createAction';
 import keyMirror from 'keymirror';
 
 export const types = keyMirror({

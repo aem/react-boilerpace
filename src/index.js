@@ -1,14 +1,18 @@
 import { browserHistory, Router } from 'react-router';
-import store from 'lib/createStore';
+import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Routes from './Routes';
+import { store, extras } from './lib/store';
 import 'style/index.scss';
 
+const initialState = window.__INITIAL_STATE__;
+const finalStore = createStore(store, initialState, extras);
+
 ReactDOM.render(
-  <Provider store={store}>
-    <Router history={browserHistory} routes={Routes} />
+  <Provider store={finalStore}>
+    <Router history={browserHistory} routes={Routes}/>
   </Provider>,
-  document.querySelector('#app')
+  document.getElementById('app')
 );

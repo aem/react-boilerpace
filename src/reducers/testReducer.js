@@ -5,9 +5,10 @@ const defaultState = Record({
 });
 
 export default function testReducer(state = new defaultState, action) {
+  const reducerState = (typeof state === 'object' && !(state instanceof defaultState) && new defaultState().merge(state)) || state;
   switch (action.type) {
     case 'UPDATE_TEXT':
-      return state.merge({rootText: action.data});
-    default: return state;
+      return reducerState.merge({rootText: action.data});
+    default: return reducerState;
   }
 }

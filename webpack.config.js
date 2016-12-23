@@ -1,4 +1,3 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const resolve = require('path').resolve;
 const webpack = require('webpack');
 
@@ -24,17 +23,12 @@ const config = {
     ]
   },
   devtool: 'eval-source-map',
-  devServer: {
-    port: 3000,
-    historyApiFallback: true,
-    stats: 'errors-only'
-  },
-  performance: {
-    hints: false
-  },
+  // performance: {
+  //   hints: false
+  // },
+  stats: 'errors-only',
   plugins: [
-    // new webpack.optimize.UglifyJsPlugin(),
-    new HtmlWebpackPlugin({template: 'index.html'}),
+    new webpack.optimize.UglifyJsPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify('development')

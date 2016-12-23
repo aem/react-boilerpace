@@ -1,8 +1,8 @@
 import { IndexRoute, Route } from 'react-router';
 import React from 'react';
 
-import AppHeader from 'components/AppHeader';
-import HomePageContainer from 'containers/HomePageContainer';
+import AppHeader from './components/AppHeader';
+import HomePageContainer from './containers/HomePageContainer';
 
 const Page1 = props => <div>page 1</div>;
 const Page2 = props => <div>page 2</div>;
