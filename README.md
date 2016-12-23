@@ -17,9 +17,12 @@ npm start
 
 ## Project Features
 This boilerplate project has a few nice things over other webpack/React/Redux boilerplates
+* Isomorphic rendering to improve initial load/paint times while still giving you all of the benefits of React
 * SCSS/CSS support by default, no extra config required
+  * CSS styles are minified and inlined to support quicker load times and reduce external dependencies
 * Image support by default
-  * Images use same URL in all locations. Most boilerplates use different URL schemes if you're `require`ing an image vs. when you `url()` an image from CSS
+  * Images use absolute URLs rather than relative URLs to prevent images becoming unlinked if your directory structure changes
+  * Images aren't Base64 converted and inlined into the JS bundle, but rather loaded asynchronously from the server to avoid bloating of the JS file and improve load times
 * Simple example components that are easily understandable and easy to replace when you're ready to start writing code
 
 ## Project Structure
