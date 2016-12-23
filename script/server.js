@@ -21,7 +21,9 @@ const app = express();
 app.use('/images', express.static('dist/images'));
 
 app.use('/bundle.js', function (req, res) {
-  return fs.createReadStream('./dist/bundle.js').pipe(res);
+  return fs.createReadStream('./dist/bundle.js.gz').pipe(
+    res.header('Content-Encoding', 'gzip')
+  );
 });
 
 const HTML = ({reduxState, renderProps}) => (

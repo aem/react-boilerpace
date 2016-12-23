@@ -4,7 +4,7 @@ import ReduxThunk from 'redux-thunk';
 
 const extras = compose(
   applyMiddleware(ReduxThunk),
-  (typeof process !== 'undefined' && process.env.NODE_ENV === 'development' && window.devToolsExtension) ?
+  (typeof process !== 'undefined' && process.env.NODE_ENV === 'development' && typeof window !== 'undefined' && window.devToolsExtension) ?
     window.devToolsExtension() :
     f => f
 );
