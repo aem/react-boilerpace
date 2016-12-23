@@ -23,9 +23,7 @@ const config = {
     ]
   },
   devtool: 'eval-source-map',
-  // performance: {
-  //   hints: false
-  // },
+  performance: false,
   stats: 'errors-only',
   plugins: [
     new webpack.optimize.UglifyJsPlugin(),

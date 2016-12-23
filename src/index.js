@@ -5,7 +5,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Routes from './Routes';
 import { store, extras } from './lib/store';
-import 'style/index.scss';
 
 const initialState = window.__INITIAL_STATE__;
 const finalStore = createStore(store, initialState, extras);

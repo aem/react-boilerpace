@@ -7,8 +7,18 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import routes from './Routes';
 import { store, extras } from './lib/store';
+import sass from 'node-sass';
+
+let style = '';
+sass.render({file: 'src/style/index.scss'}, (err, result) => {
+  if (!err) {
+    style = result.css.toString();
+  }
+});
 
 const app = express();
+
+app.use('/images', express.static('dist'));
 
 app.use('/bundle.js', function (req, res) {
   return fs.createReadStream('./dist/bundle.js').pipe(res);
@@ -18,7 +28,8 @@ const HTML = ({reduxState, renderProps}) => (
   <html lang="en">
     <head>
       <meta charset="UTF-8" />
-        <title>React Boilerplate</title>
+      <title>React Boilerplate</title>
+      <style dangerouslySetInnerHTML={{__html: style}} />
     </head>
   <body>
     <div id="app" dangerouslySetInnerHTML={{__html: renderToString(
