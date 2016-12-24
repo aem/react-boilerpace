@@ -10,7 +10,7 @@ import { store, extras } from '../src/lib/store';
 import sass from 'node-sass';
 
 let style = '';
-sass.render({file: 'src/style/index.scss'}, (err, result) => {
+sass.render({file: 'src/style/index.scss', outputStyle: 'compressed'}, (err, result) => {
   if (!err) {
     style = result.css.toString();
   }
