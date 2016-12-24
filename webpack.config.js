@@ -19,7 +19,11 @@ const config = {
     modules: [
       resolve(__dirname, 'node_modules'),
       resolve(__dirname, 'src')
-    ]
+    ],
+    alias: {
+      'react': 'preact-compat/dist/preact-compat',
+      'react-dom': 'preact-compat/dist/preact-compat'
+    }
   },
   devtool: 'eval-source-map',
   performance: false,
