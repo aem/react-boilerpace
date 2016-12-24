@@ -26,27 +26,27 @@ app.use('/bundle.js', function (req, res) {
   );
 });
 
-const HTML = ({reduxState, renderProps}) => (
-  <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1.0" />
-      <title>React Boilerplate</title>
-      <link rel="preload" href="/bundle.js" as="script" />
-      <link rel="prefetch" href="/bundle.js" />
-      <style dangerouslySetInnerHTML={{__html: style}} />
-    </head>
+const renderHtml = (reduxState, renderProps) => (
+ `<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1.0" />
+    <title>React Boilerplate</title>
+    <link rel="preload" href="/bundle.js" as="script" />
+    <link rel="prefetch" href="/bundle.js" />
+    <style>${style}</style>
+  </head>
   <body>
-    <div id="app" dangerouslySetInnerHTML={{__html: renderToString(
-      <Provider store={reduxState}>
-        <RouterContext {...renderProps} />
-      </Provider>
-    )}}>
-    </div>
-    <script dangerouslySetInnerHTML={{__html: `window.__INITIAL_STATE__=${JSON.stringify(reduxState.getState())}`}} />
-    <script src="/bundle.js" />
-    </body>
-  </html>
+  <div id="app"> ${renderToString(
+    <Provider store={reduxState}>
+      <RouterContext {...renderProps} />
+    </Provider>
+  )}
+  </div>
+  <script>window.__INITIAL_STATE__=${JSON.stringify(reduxState.getState())}</script>
+  <script src="/bundle.js"></script>
+  </body>
+  </html>`
 );
 
 app.use((req, res) => {
@@ -54,7 +54,7 @@ app.use((req, res) => {
   match({routes, location: req.url}, (err, redirectLocation, renderProps) => {
     if (err) res.status(500).send(err.message);
     else if (renderProps) {
-      res.send(renderToString(<HTML reduxState={initialStore} renderProps={renderProps} />));
+      res.send(renderHtml(initialStore, renderProps));
     }
   })
 });
