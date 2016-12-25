@@ -4,8 +4,8 @@ import React from 'react';
 import AppHeader from './components/AppHeader';
 import HomePageContainer from './containers/HomePageContainer';
 
-const Page1 = props => <div>page 1</div>;
-const Page2 = props => <div>page 2</div>;
+const Page1 = () => <div>page 1</div>;
+const Page2 = () => <div>page 2</div>;
 
 export default (
   <Route path="/" component={AppHeader}>

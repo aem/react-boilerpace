@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import { updateText } from '../../actions/testActions';
 
 export default class TextDisplay extends Component {
   static propTypes = {
@@ -15,7 +14,7 @@ export default class TextDisplay extends Component {
   }
 
   render() {
-    const {test, updateText} = this.props;
+    const { test, updateText } = this.props;
 
     return (
       <section>
@@ -25,5 +24,5 @@ export default class TextDisplay extends Component {
         <div className="css-image" />
       </section>
     );
-  };
+  }
 }

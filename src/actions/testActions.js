@@ -1,5 +1,6 @@
-import createAction from '../lib/createAction';
 import keyMirror from 'keymirror';
+
+import createAction from '../lib/createAction';
 
 export const types = keyMirror({
   UPDATE_TEXT: null

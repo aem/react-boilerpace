@@ -1,5 +1,5 @@
 import { Link } from 'react-router';
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 
 export default class RouterContainer extends Component {
   render() {

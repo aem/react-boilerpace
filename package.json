@@ -18,7 +18,8 @@
     "open-server": "open https://localhost:3000",
     "dev": "npm-run-all clean build-for-server",
     "prod": "npm-run-all clean build-for-server:prod",
-    "start": "npm-run-all dev"
+    "start": "npm-run-all dev",
+    "lint": "eslint --ext '.js' ./src"
   },
   "repository": {
     "type": "git",
@@ -31,6 +32,8 @@
   },
   "homepage": "https://github.com/aem/react-boilerplate#readme",
   "dependencies": {
+    "babel-eslint": "^7.1.1",
+    "eslint-plugin-jsx-a11y": "^3.0.2",
     "immutable": "^3.8.1",
     "keymirror": "^0.1.1",
     "preact": "^7.1.0",
@@ -52,6 +55,11 @@
     "babel-preset-react": "^6.16.0",
     "compression-webpack-plugin": "^0.3.2",
     "css-loader": "^0.26.1",
+    "eslint": "^3.12.2",
+    "eslint-config-airbnb-base": "^11.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx": "^0.0.2",
+    "eslint-plugin-react": "^6.8.0",
     "express": "^4.14.0",
     "ncp": "^2.0.0",
     "node-sass": "^4.0.0",
