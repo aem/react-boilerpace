@@ -1,12 +1,14 @@
+/* global window */
 import { applyMiddleware, compose } from 'redux';
-import store from '../reducers';
 import ReduxThunk from 'redux-thunk';
+
+import store from '../reducers';
 
 const extras = compose(
   applyMiddleware(ReduxThunk),
   (typeof process !== 'undefined' && process.env.NODE_ENV === 'development' && typeof window !== 'undefined' && window.devToolsExtension) ?
     window.devToolsExtension() :
-    f => f
+    (f) => f
 );
 
-export {store, extras};
+export { store, extras };

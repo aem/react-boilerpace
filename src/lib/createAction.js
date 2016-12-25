@@ -1,1 +1,1 @@
-export default (type) => (data = {}) => ({type, data});
+export default (type) => (data = {}) => ({ type, data });

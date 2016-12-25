@@ -1,3 +1,4 @@
+/* global window, document */
 import { browserHistory, Router } from 'react-router';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
@@ -6,7 +7,7 @@ import ReactDOM from 'react-dom';
 import Routes from './Routes';
 import { store, extras } from './lib/store';
 
-const initialState = window.__INITIAL_STATE__;
+const initialState = window.__INITIAL_STATE__; // eslint-disable-line no-underscore-dangle
 const finalStore = createStore(store, initialState, extras);
 
 ReactDOM.render(
