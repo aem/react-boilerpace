@@ -15,7 +15,6 @@
     "clean": "babel-node script/cleanDist.js",
     "images": "babel-node script/buildImages.js",
     "server": "babel-node script/server.js",
-    "open-server": "open https://localhost:3000",
     "dev": "npm-run-all clean build-for-server",
     "prod": "npm-run-all clean build-for-server:prod",
     "start": "npm-run-all dev",

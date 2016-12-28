@@ -21,7 +21,7 @@ const config = {
       resolve(__dirname, 'src')
     ],
     alias: {
-      'react': 'preact-compat/dist/preact-compat',
+      react: 'preact-compat/dist/preact-compat',
       'react-dom': 'preact-compat/dist/preact-compat'
     }
   },

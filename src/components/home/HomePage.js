@@ -6,13 +6,6 @@ export default class TextDisplay extends Component {
     updateText: PropTypes.func.isRequired
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      text: ''
-    };
-  }
-
   render() {
     const { test, updateText } = this.props;
 
@@ -22,6 +15,7 @@ export default class TextDisplay extends Component {
         <h2>{test.rootText}</h2>
         <textarea onChange={(e) => updateText(e.target.value)} defaultValue={test.rootText} />
         <div className="css-image" />
+        <img width="150" src="/images/developers.jpg" />
       </section>
     );
   }
