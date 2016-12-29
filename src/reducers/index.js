@@ -1,8 +1,7 @@
 import { combineReducers } from 'redux';
-import testReducer from './testReducer';
 
-const reducer = combineReducers({
-  test: testReducer
-});
+import { reducerMap } from '../lib/state';
+
+const reducer = combineReducers(reducerMap);
 
 export default reducer;

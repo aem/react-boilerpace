@@ -1,13 +1,19 @@
 /* global window, document */
-import { browserHistory, Router } from 'react-router';
 import { createStore } from 'redux';
-import { Provider } from 'react-redux';
 import React from 'react';
+import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom';
+
+import { browserHistory, Router } from 'react-router';
+import { modelMap } from './lib/state';
 import Routes from './Routes';
 import { store, extras } from './lib/store';
 
 const initialState = window.__INITIAL_STATE__; // eslint-disable-line no-underscore-dangle
+// use our model map to initialize our immutable Records in our state
+Object.keys(initialState).forEach((k) => {
+  initialState[k] = new modelMap[k](initialState[k]);
+});
 const finalStore = createStore(store, initialState, extras);
 
 ReactDOM.render(
