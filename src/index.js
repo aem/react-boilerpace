@@ -1,8 +1,8 @@
 /* global window, document */
+import { createStore } from 'redux';
 import React from 'react';
 import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
 
 import { browserHistory, Router } from 'react-router';
 import { modelMap } from './lib/state';
