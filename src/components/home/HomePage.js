@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import developers from '../../images/developers.jpg';
 
 export default class TextDisplay extends Component {
   static propTypes = {
@@ -14,8 +15,7 @@ export default class TextDisplay extends Component {
         <h1>Welcome!</h1>
         <h2>{test.rootText}</h2>
         <textarea onChange={(e) => updateText(e.target.value)} defaultValue={test.rootText} />
-        <div className="css-image" />
-        <img width="150" src="/images/developers.jpg" />
+        <img width="150" src={developers} />
       </section>
     );
   }
