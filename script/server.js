@@ -1,5 +1,6 @@
 import compression from 'compression';
 import { createStore } from 'redux';
+import cxs from 'cxs';
 import express from 'express';
 import { match, RouterContext } from 'react-router';
 import { Provider } from 'react-redux';
@@ -15,27 +16,31 @@ export default () => {
   app.use(compression());
   app.use('/assets/', express.static('build/assets'));
 
-  const renderHtml = (reduxState, renderProps) => (
-    `<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1.0" />
-    <title>React Boilerplate</title>
-    <link rel="preload" href="/assets/main.js" as="script" />
-    <link rel="prefetch" href="/assets/main.js" />
-  </head>
-  <body>
-  <div id="app"> ${renderToString(
+  const renderHtml = (reduxState, renderProps) => {
+    const content = renderToString(
       <Provider store={reduxState}>
         <RouterContext {...renderProps} />
       </Provider>
-    )}
-  </div>
-  <script>window.__INITIAL_STATE__=${JSON.stringify(reduxState.getState())}</script>
-  <script src="/assets/main.js"></script>
-  </body>
-  </html>`
-  );
+    );
+    const style = cxs.getCss();
+    return (`
+      <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1.0" />
+        <title>React Boilerplate</title>
+        <style>${style}</style>
+        <link rel="preload" href="/assets/main.js" as="script" />
+        <link rel="prefetch" href="/assets/main.js" />
+      </head>
+      <body>
+        <div id="app">${content}</div>
+        <script>window.__INITIAL_STATE__=${JSON.stringify(reduxState.getState())}</script>
+        <script src="/assets/main.js"></script>
+      </body>
+      </html>
+    `);
+  };
 
   app.use((req, res) => {
     const initialStore = createStore(store, undefined, extras);
