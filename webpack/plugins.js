@@ -8,7 +8,9 @@ const dev = [
     },
     __development__: true,
     __production__: false
-  })
+  }),
+  new webpack.HotModuleReplacementPlugin(),
+  new webpack.NoEmitOnErrorsPlugin()
 ];
 
 const prod = [
@@ -19,7 +21,9 @@ const prod = [
     },
     __development__: false,
     __production__: true
-  })
+  }),
+  new webpack.HotModuleReplacementPlugin(),
+  new webpack.NoEmitOnErrorsPlugin()
 ];
 
 module.exports = {

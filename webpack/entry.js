@@ -1,8 +1,16 @@
 const resolve = require('path').resolve;
 
-const index = resolve(__dirname, '../src/index');
+const dev = [
+  'webpack-hot-middleware/client',
+  resolve(__dirname, '../src/index'),
+];
+
+const prod = [
+  'webpack-hot-middleware/client',
+  resolve(__dirname, '../src/index'),
+];
 
 module.exports = {
-  dev: index,
-  prod: index
+  dev,
+  prod
 };

@@ -5,7 +5,7 @@ const rootFolder = resolve(__dirname, '..');
 const client = {
   path: resolve(rootFolder, 'build/assets'),
   publicPath: '/assets/',
-  filename: '[name].js',
+  filename: '[name].[hash].js',
   chunkFilename: '[name].[hash].js'
 };
 
